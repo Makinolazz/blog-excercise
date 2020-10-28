@@ -21,8 +21,9 @@
                 "<td class='id'>" + item.id + "</td>" +
                 "<td>" + item.title + "</td>" +
                 "<td>" + item.author + "</td>" +
-                "<td>" + "<button type='button' class='btnEdit'>" + "EDIT" + "</button>" + "</td>" +
-                "<td>" + "<button type='button' class='btnDelete'>" + "DELETE" + "</button>" + "</td>" +
+                "<td class='justify-content-center'>" + "<button type='button' id='btnOpen' class='btn btn-success btn-sm'>" + "Open" + "</button>" + "</td>" +
+                "<td class='justify-content-center'>" + "<button type='button' id='btnEdit' class='btn btn-info btn-sm'>" + "Edit" + "</button>" + "</td>" +
+                "<td class='justify-content-center'>" + "<button type='button' id='btnDelete' class='btn btn-danger btn-sm'>" + "Delete" + "</button>" + "</td>" +
                 "</tr>");
         });
 
@@ -76,7 +77,18 @@
         CloseInput();
     })
 
-    $(document).on('click', '.btnEdit', function () {
+    $(document).on('click', '#btnOpen', function () {
+        var valor = parseInt($(this).closest("tr").find('.id').text());
+        var item = posts.find(item => item.id === valor)
+
+        $("#txtModalTitle").text(item.title);
+        $("#txtModalText").val(item.text);
+        $("#txtModalAuthor").text(item.author);
+
+        $('#myModal').modal('toggle')
+    })
+
+    $(document).on('click', '#btnEdit', function () {
         var valor = parseInt($(this).closest("tr").find('.id').text());
 
         var item = posts.find(item => item.id === valor)
@@ -89,7 +101,7 @@
         $("#editPostContainer").toggle();
     })
 
-    $(document).on('click', '.btnDelete', function () {
+    $(document).on('click', '#btnDelete', function () {
         var valor = parseInt($(this).closest("tr").find('.id').text());
 
         fetch(`${uri}/${valor}`, {

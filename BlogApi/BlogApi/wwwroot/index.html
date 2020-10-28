@@ -1,62 +1,126 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title></title>
     <meta charset="UTF-8">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="../js/site.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Blog Excercise</title>
 </head>
 <body>
 
-    <br />
-    <div>
-        <button id="btnGoCreate">Create Post</button>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col"></div>
+
+            <div class="col-6 align-self-center">
+                <button id="btnGoCreate" class="btn btn-primary btn-lg btn-block">Create Post</button>
+            </div>
+
+            <div class="col"></div>
+        </div>
     </div>
 
     <br />
 
-    <div id="editPostContainer" style="display:none">
-        <form id="editPostForm">
-            <label>Post ID: </label>
-            <input type="text" id="txtPostId" disabled /> <br />
+    <div class="container" id="editPostContainer" style="display:none">
+        <div class="row justify-content-center">
+            <div class="col"></div>
 
-            <label>Title</label> <br />
-            <input type="text" id="txtTitle" placeholder="Post Title" /> <br />
+            <div class="col-8 align-self-center">
+                <form id="editPostForm">
+                    <label>Post ID: </label>
+                    <input type="text" id="txtPostId" disabled /> <br />
 
-            <label>Content</label> <br />
-            <input type="text" id="txtText" placeholder="Post Text" /> <br />
+                    <label>Title</label> <br />
+                    <input type="text" id="txtTitle" placeholder="Post Title" /> <br />
 
-            <label>Author</label> <br />
-            <input type="text" id="txtAuthor" placeholder="Post Author" /> <br />
+                    <label>Content</label> <br />
+                    <textarea id="txtText" class="form-control" placeholder="Add your content here..."></textarea>
 
-            <label>Private Post?</label>
-            <input type="checkbox" id="checkIsPrivate" value="false" /> <br /> <br />
+                    <label>Author</label> <br />
+                    <input type="text" id="txtAuthor" placeholder="Post Author" /> <br />
 
-            <button id="btnSave">Save Changes</button>
-            <button id="btnCancel">Cancel</button> <br />
-        </form>
+                    <label>Private Post?</label>
+                    <input type="checkbox" id="checkIsPrivate" value="false" /> <br /> <br />
+
+
+                </form>
+                <div>
+                    <button id="bntCancel" class="btn btn-danger">Cancel</button>
+                    <button id="btnSave" class="btn btn-primary">Save Changes</button>
+                </div>
+            </div>
+
+            <div class="col"></div>
+        </div>
     </div>
-    
-    <div>
-        <label id="lblMessage"></label> <br />
+    <br />
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col"></div>
+
+            <div class="col-6 align-self-center">
+                <p class="text-warning text-center" id="lblMessage"></p>
+            </div>
+
+            <div class="col"></div>
+        </div>
     </div>
 
-    <div>
-        <table id="tblPosts">
-            <thead>
-                <tr>
-                    <th class="postId">ID</th>
-                    <th>Title</th>
-                    <th>Author</th>
-                    <th></th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody id="tBodyPosts"></tbody>
-        </table>
+    <div class="container">
+
+        <div class="row justify-content-center">
+            <div class="col"></div>
+
+            <div class="col-10">
+                <table id="tblPosts" class="table table-striped" style="table-layout: fixed;word-wrap: break-word">
+                    <thead>
+                        <tr>
+                            <th class="postId" scope="col">#</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Author</th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="tBodyPosts"></tbody>
+                </table>
+            </div>
+
+            <div class="col"></div>
+        </div>
+    </div>
+
+    <div id="myModal" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="font-weight-bold" id="txtModalTitle"></h3>
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <textarea id="txtModalText" class="form-control text-justify" disabled></textarea>
+                </div>
+
+                <div class="modal-footer">
+                    <p class="font-italic" id="txtModalAuthor"></p>
+                </div>
+            </div>
+        </div>
     </div>
 
 
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="../js/site.js"></script>
 
 </body>
 </html>

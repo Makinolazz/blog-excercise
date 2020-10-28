@@ -1,7 +1,10 @@
 ﻿$(document).ready(function () {
     const uri = "api/Posts";
+    var postTitle = "";
 
     $("#btnAdd").click(function () {
+        postTitle = $("#txtTitle").val();
+
         fetch(uri, {
             method: "POST",
             headers: {
@@ -31,7 +34,7 @@
     }
 
     function ClearInputs() {
-        $('#lblMessage').text(`The post: "${$("#txtTitle").val()}" was created`)
-        $('input').val('');
+        $('#lblMessage').text(`The post: "${postTitle}" was created`)    
+        $("#createPostForm").trigger("reset")            
     }
 });
