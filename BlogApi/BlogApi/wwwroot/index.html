@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="../js/site.js"></script>
+</head>
+<body>
+
+    <br />
+    <div>
+        <button id="btnGoCreate">Create Post</button>
+    </div>
+
+    <br />
+
+    <div id="editPostContainer" style="display:none">
+        <form id="editPostForm">
+            <label>Post ID: </label>
+            <input type="text" id="txtPostId" disabled /> <br />
+
+            <label>Title</label> <br />
+            <input type="text" id="txtTitle" placeholder="Post Title" /> <br />
+
+            <label>Content</label> <br />
+            <input type="text" id="txtText" placeholder="Post Text" /> <br />
+
+            <label>Author</label> <br />
+            <input type="text" id="txtAuthor" placeholder="Post Author" /> <br />
+
+            <label>Private Post?</label>
+            <input type="checkbox" id="checkIsPrivate" value="false" /> <br /> <br />
+
+            <button id="btnSave">Save Changes</button>
+            <button id="btnCancel">Cancel</button> <br />
+        </form>
+    </div>
+    
+    <div>
+        <label id="lblMessage"></label> <br />
+    </div>
+
+    <div>
+        <table id="tblPosts">
+            <thead>
+                <tr>
+                    <th class="postId">ID</th>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="tBodyPosts"></tbody>
+        </table>
+    </div>
+
+
+
+</body>
+</html>
