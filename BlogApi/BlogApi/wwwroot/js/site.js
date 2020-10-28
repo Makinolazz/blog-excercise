@@ -22,6 +22,7 @@
                 "<td>" + item.title + "</td>" +
                 "<td>" + item.author + "</td>" +
                 "<td>" + "<button type='button' class='btnEdit'>" + "EDIT" + "</button>" + "</td>" +
+                "<td>" + "<button type='button' class='btnDelete'>" + "DELETE" + "</button>" + "</td>" +
                 "</tr>");
         });
 
@@ -86,6 +87,16 @@
         $("#txtAuthor").val(item.author);
         $("#checkIsPrivate").prop("checked", item.isPrivate);
         $("#editPostContainer").toggle();
+    })
+
+    $(document).on('click', '.btnDelete', function () {
+        var valor = parseInt($(this).closest("tr").find('.id').text());
+
+        fetch(`${uri}/${valor}`, {
+            method: 'DELETE'
+        })
+        .then(() => RefreshPostsList())
+        .catch(error => console.error('Unable to update item.', error))
     })
 
 
